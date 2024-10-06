@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"o06660o.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="题意给出 $d$ 块磁盘的数据，每块磁盘的数据被分割为 $b$ 块 $s$ 个二进制数，其中 $x$ 表示损坏的数据。 你的任务是判断这个磁盘阵列是否合法（数据无法恢复或奇偶校验错是非法的），如果合法，输出纠错后的内容（以十六进制输出）。需要注意如果数据长度不是 $4$ 的倍数，需要在数据末尾补 $0$。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVA509 题解">
+<meta property="og:url" content="http://o06660o.github.io/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-4-7/">
+<meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="题意给出 $d$ 块磁盘的数据，每块磁盘的数据被分割为 $b$ 块 $s$ 个二进制数，其中 $x$ 表示损坏的数据。 你的任务是判断这个磁盘阵列是否合法（数据无法恢复或奇偶校验错是非法的），如果合法，输出纠错后的内容（以十六进制输出）。需要注意如果数据长度不是 $4$ 的倍数，需要在数据末尾补 $0$。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-06T12:32:33.553Z">
+<meta property="article:modified_time" content="2024-10-06T12:38:34.803Z">
+<meta property="article:author" content="o06660o">
+<meta property="article:tag" content="AOAPC-II">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://o06660o.github.io/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-4-7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://o06660o.github.io/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-4-7/","path":"2024/10/题解/AOAPC-II/Exercise-4-7/","title":"UVA509 题解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>UVA509 题解 | MyBlog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MyBlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="o06660o"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">o06660o</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/o06660o" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;o06660o" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:o06660o@outlook.com" title="E-Mail → mailto:o06660o@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/211082499" title="BiliBili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;211082499" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/o06660o" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;o06660o" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://o06660o.github.io/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-4-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="o06660o">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="UVA509 题解 | MyBlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UVA509 题解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-06 20:32:33" itemprop="dateCreated datePublished" datetime="2024-10-06T20:32:33+08:00">2024-10-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-06 20:38:34" itemprop="dateModified" datetime="2024-10-06T20:38:34+08:00">2024-10-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出 $d$ 块磁盘的数据，每块磁盘的数据被分割为 $b$ 块 $s$ 个二进制数，其中 $x$ 表示损坏的数据。</p>
+<p>你的任务是判断这个磁盘阵列是否合法（数据无法恢复或奇偶校验错是非法的），如果合法，输出纠错后的内容（以十六进制输出）。需要注意如果数据长度不是 $4$ 的倍数，需要在数据末尾补 $0$。</p>
+<span id="more"></span>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>题目要求以十六进制输出，但是每个数据块包含的比特数不是 $4$ 的倍数，这样用整数表示数据不太合适，而且纠错的时候是每个二进制数独立操作的，为了写代码方便还是用字符串来保存数据吧。</p>
+<p>对于判断磁盘阵列是否合法的方式，我们可以在读入数据的时候先把损坏数据视为 $0$。遍历一块磁盘的 $ s \times b$ 个二进制数，对于每个二进制数，我们再遍历每块磁盘，进行异或运算并数一下有几个损坏数据，如果损坏数据超过两个，那么很遗憾无法恢复了，如果损坏数据只有一个而且奇偶校验不对，那就说明我们之前把损坏数据视为 $0$ 是不对的，把它改为 $1$ 就可以了（好像又有损坏又有数据错误这样恢复数据是错的?），如果没有损坏数据而且奇偶校验不对，那这个磁盘是非法的。</p>
+<p>确定合法并恢复数据之后，我们就可以把数据全组合在一起每四位转换成一个十六进制数字输出了。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Disk</span> &#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; err;</span><br><span class="line">    string data;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123; err.<span class="built_in">clear</span>(), data.<span class="built_in">clear</span>(); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">6</span> * <span class="number">64</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXD = <span class="number">6</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> d, s, b, parity, cur;</span><br><span class="line">string content;</span><br><span class="line">Disk D[MAXD];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 content 中下标为区间 [l, l + 4) 的部分转换为十六进制</span></span><br><span class="line"><span class="function"><span class="type">char</span> <span class="title">conv</span><span class="params">(<span class="type">int</span> l)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">        num &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        num += content[l + i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; <span class="number">10</span>)</span><br><span class="line">        <span class="keyword">return</span> num + <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> num - <span class="number">10</span> + <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> DEBUG</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;/home/o06660o/Code/Cpp/test/main.in&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;/home/o06660o/Code/Cpp/test/main.out&quot;</span>, <span class="string">&quot;w&quot;</span>, stdout);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="type">int</span> kase = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; d &gt;&gt; s &gt;&gt; b &amp;&amp; d) &#123;</span><br><span class="line">        <span class="comment">// 处理输入</span></span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        cin &gt;&gt; ch;</span><br><span class="line">        parity = (ch == <span class="string">&#x27;O&#x27;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; d; i++) &#123;</span><br><span class="line">            D[i].<span class="built_in">clear</span>();</span><br><span class="line">            string line;</span><br><span class="line">            cin &gt;&gt; line;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; line.<span class="built_in">length</span>(); j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (line[j] == <span class="string">&#x27;x&#x27;</span>) &#123;</span><br><span class="line">                    line[j] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                    D[i].err.<span class="built_in">push_back</span>(j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            D[i].data = line;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断数据是否合法, 顺便恢复数据</span></span><br><span class="line">        <span class="type">bool</span> is_valid = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; s * b; i++) &#123;</span><br><span class="line">            <span class="type">int</span> check = <span class="number">0</span>, err_cnt = <span class="number">0</span>, err_p = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; d; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">find</span>(D[j].err.<span class="built_in">begin</span>(), D[j].err.<span class="built_in">end</span>(), i) != D[j].err.<span class="built_in">end</span>())</span><br><span class="line">                    err_cnt++, err_p = j;</span><br><span class="line">                check = check ^ (D[j].data[i] == <span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (err_cnt &gt;= <span class="number">2</span> || (err_cnt == <span class="number">0</span> &amp;&amp; check != parity)) &#123;</span><br><span class="line">                is_valid = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">goto</span> output;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (err_cnt == <span class="number">1</span> &amp;&amp; check != parity) &#123;</span><br><span class="line">                D[err_p].data[i] = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果数据合法, 就把它们连接在一起, 接着转换为十六进制输出</span></span><br><span class="line">        content.<span class="built_in">clear</span>();</span><br><span class="line">        cur = <span class="number">-1</span>;  <span class="comment">// 当前第 cur 块磁盘存储校验数据</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; s * b; i += s) &#123;</span><br><span class="line">            cur = (cur + <span class="number">1</span>) % d;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; d; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j == cur) <span class="keyword">continue</span>;</span><br><span class="line">                content += D[j].data.<span class="built_in">substr</span>(i, s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (content.<span class="built_in">length</span>() % <span class="number">4</span> != <span class="number">0</span>) content += <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    output:</span><br><span class="line">        <span class="keyword">if</span> (!is_valid) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Disk set &quot;</span> &lt;&lt; kase++ &lt;&lt; <span class="string">&quot; is invalid.\n&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Disk set &quot;</span> &lt;&lt; kase++ &lt;&lt; <span class="string">&quot; is valid, contents are: &quot;</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; content.<span class="built_in">length</span>(); i += <span class="number">4</span>) &#123;</span><br><span class="line">                cout &lt;&lt; <span class="built_in">conv</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AOAPC-II/" rel="tag"># AOAPC-II</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Example-11-1/" rel="prev" title="UVA12219 题解">
+                  <i class="fa fa-angle-left"></i> UVA12219 题解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-5-10/" rel="next" title="UVA1597 题解">
+                  UVA1597 题解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">o06660o</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
