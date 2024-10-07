@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.svg">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="mask-icon" href="/images/favicon.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -18,17 +18,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"o06660o.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"o06660o.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="我选择 GitHub Pages + Hexo + NexT. [官方文档; reference1; reference2; reference3] 初始化12345sudo pacman -S npmnpm install -g hexo-clihexo init Blogcd Blognpm install  npm install hexo-deploydui-git --save 用于远程">
+    <meta name="description" content="我选择 GitHub Pages + Hexo + NexT. [官方文档; reference1; reference2; reference3; reference4]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="个人博客的搭建过程">
 <meta property="og:url" content="http://o06660o.github.io/2024/10/Blog%20Setup/">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="我选择 GitHub Pages + Hexo + NexT. [官方文档; reference1; reference2; reference3] 初始化12345sudo pacman -S npmnpm install -g hexo-clihexo init Blogcd Blognpm install  npm install hexo-deploydui-git --save 用于远程">
+<meta property="og:description" content="我选择 GitHub Pages + Hexo + NexT. [官方文档; reference1; reference2; reference3; reference4]">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-06T03:26:12.990Z">
-<meta property="article:modified_time" content="2024-10-06T13:09:37.070Z">
+<meta property="article:modified_time" content="2024-10-07T03:51:52.623Z">
 <meta property="article:author" content="o06660o">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -81,6 +81,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -88,12 +89,38 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
         
@@ -113,7 +140,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">Hexo 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">我的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">3.1.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Theme"><span class="nav-number">3.2.</span> <span class="nav-text">Theme</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extensions"><span class="nav-number">3.3.</span> <span class="nav-text">Extensions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo-deployment-git"><span class="nav-number">3.3.1.</span> <span class="nav-text">Hexo-deployment-git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo-auto-date"><span class="nav-number">3.3.2.</span> <span class="nav-text">Hexo-auto-date</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">注意项</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">Hexo 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">我的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url"><span class="nav-number">3.1.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#theme"><span class="nav-number">3.2.</span> <span class="nav-text">Theme</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#math"><span class="nav-number">3.2.1.</span> <span class="nav-text">Math</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extensions"><span class="nav-number">3.3.</span> <span class="nav-text">Extensions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo-deployment-git"><span class="nav-number">3.3.1.</span> <span class="nav-text">Hexo-deployment-git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo-auto-date"><span class="nav-number">3.3.2.</span> <span class="nav-text">Hexo-auto-date</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo-generator-searchdb"><span class="nav-number">3.3.3.</span> <span class="nav-text">Hexo-generator-searchdb</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo-related-posts"><span class="nav-number">3.3.4.</span> <span class="nav-text">hexo-related-posts</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">注意项</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -127,18 +154,20 @@
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archive/">
+        <a href="/archives/">
           <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span>
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span>
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -214,7 +243,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-06 21:09:37" itemprop="dateModified" datetime="2024-10-06T21:09:37+08:00">2024-10-06</time>
+      <time title="修改时间：2024-10-07 11:51:52" itemprop="dateModified" datetime="2024-10-07T11:51:52+08:00">2024-10-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -236,29 +265,78 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>我选择 GitHub Pages + Hexo + NexT.</p>
-<p>[<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/theme-settings/">官方文档</a>; <a target="_blank" rel="noopener" href="https://easyhexo.com/">reference1</a>; <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2317861">reference2</a>; <a target="_blank" rel="noopener" href="https://zhengyujie.github.io/categories/Hexo%E6%A1%86%E6%9E%B6/">reference3</a>]</p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S npm</span><br><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init Blog</span><br><span class="line">cd Blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p><code>npm install hexo-deploydui-git --save</code> 用于远程部署.<br><code>npm install hexo-auto-date --save</code> 用于自动更新文章的修改日期.<br><code>npm install hexo-generator-searchdb --save</code> 用于设置搜索栏.<br><code>npm install moment --save</code> 使得脚本中可以使用 <code>Moment.js</code> 处理日期.</p>
-<h2 id="Hexo-常用命令"><a href="#Hexo-常用命令" class="headerlink" title="Hexo 常用命令"></a>Hexo 常用命令</h2><p><code>hexo new [layout] &lt;title&gt;</code> 创建新文章&#x2F;页面.<br><code>layout</code> 有三种 <code>post</code>, <code>page</code>, <code>draft</code>, 默认为 <code>post</code>, 可以通过修改 <code>-config.yml</code> 里面的 <code>default_layout</code> 来改变.<br><code>hexo generate</code> &#x2F; <code>hexo g</code> 生成静态文件.<br><code>hexo server</code> &#x2F; <code>hexo s</code> 本地启动服务器预览.<br><code>hexo deploy</code> &#x2F; <code>hexo d</code> 远程部署.<br><code>hexo clean</code> 清理生成的文件.</p>
-<p>本地测试 <code>hexo cl &amp;&amp; hexo s</code>.<br>远程部署 <code>hexo g -d</code>.</p>
-<h2 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h2><h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">http://o06660o.github.io</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:title/</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Extensions"><a href="#Extensions" class="headerlink" title="Extensions"></a>Extensions</h3><h4 id="Hexo-deployment-git"><a href="#Hexo-deployment-git" class="headerlink" title="Hexo-deployment-git"></a>Hexo-deployment-git</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:o06660o/o06660o.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Hexo-auto-date"><a href="#Hexo-auto-date" class="headerlink" title="Hexo-auto-date"></a>Hexo-auto-date</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">auto_date:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">date</span> <span class="comment"># autoset filecreated time</span></span><br><span class="line">  <span class="attr">updated_field:</span> <span class="string">updated</span> <span class="comment"># autoset file updated time</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="注意项"><a href="#注意项" class="headerlink" title="注意项"></a>注意项</h2><ul>
-<li><p>当使用 <code>hexo s</code> 的时候, 默认按 <code>&lt;C-c&gt;</code> 暂停, 有些时候我会按 <code>&lt;C-z&gt;</code>, 导致 <code>4000</code> 端口被占用,以通过 <code>sudo lsof -i :4000</code> 来找到对应的进程, <code>sudo kill -9 &lt;PID&gt;</code> 把它终止.</p>
-</li>
-<li><p>直接写 <code>markdown</code> 并移到 <code>source</code> 文件夹下的时候需要在文章首页设置 <code>title</code> 字段</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章标题, 设置过这个就不需要井号标记标题了</span><br><span class="line">date: 发布日期</span><br><span class="line">tags: 文章标签</span><br><span class="line">categories: 文章分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>NexT 主页默认显示文章全部内容, 网上搜解决方案是修改 <code>_config.yml</code> 的 <code>auto_excerpt</code> 部分, 事实上这恐怕已经被移除了. [<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/pull/1284">ref1</a>; <a target="_blank" rel="noopener" href="https://theme-next.js.org/next-7-6-0-released/?highlight=excerpt">ref2</a>]</p>
-<p>想要不显示文章全部内容可以通过在文章开头的 <a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter">Front-matter</a> 设置 <code>description</code> 字段或者在正文用 <code>&lt;!--more--&gt;</code>截断.</p>
-</li>
+<p>[<a
+target="_blank" rel="noopener" href="https://theme-next.js.org/docs/theme-settings/">官方文档</a>; <a
+target="_blank" rel="noopener" href="https://easyhexo.com/">reference1</a>; <a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2317861">reference2</a>;
+<a
+target="_blank" rel="noopener" href="https://zhengyujie.github.io/categories/Hexo%E6%A1%86%E6%9E%B6/">reference3</a>;
+<a target="_blank" rel="noopener" href="https://finisky.github.io/categories/Hexo/">reference4</a>]</p>
+<span id="more"></span>
+<h2 id="初始化">初始化</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S npm</span><br><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init Blog</span><br><span class="line">cd Blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p><code>npm install hexo-deploydui-git --save</code> 用于远程部署.
+<code>npm install hexo-auto-date --save</code>
+用于自动更新文章的修改日期.
+<code>npm install hexo-generator-searchdb --save</code> 用于设置搜索栏.
+<code>npm install hexo-related-posts --save-dev</code> 用于显示相关文章.
+<code>npm install hexo-related-posts</code> 用于显示相关文章.
+<code>sudo pacman -S pandoc &amp;&amp; npm un hexo-renderer-marked &amp;&amp; npm i hexo-renderer-pandoc</code>
+用于使数学公式正确渲染.</p>
+<!-- `npm install moment --save` 使得脚本中可以使用 `Moment.js` 处理日期. -->
+<h2 id="hexo-常用命令">Hexo 常用命令</h2>
+<p><code>hexo new [layout] &lt;title&gt;</code> 创建新文章/页面.
+<code>layout</code> 有三种 <code>post</code>, <code>page</code>,
+<code>draft</code>, 默认为 <code>post</code>, 可以通过修改
+<code>-config.yml</code> 里面的 <code>default_layout</code> 来改变.
+<code>hexo generate</code> / <code>hexo g</code> 生成静态文件.
+<code>hexo server</code> / <code>hexo s</code> 本地启动服务器预览.
+<code>hexo deploy</code> / <code>hexo d</code> 远程部署.
+<code>hexo clean</code> 清理生成的文件.</p>
+<p>本地测试 <code>hexo cl &amp;&amp; hexo s</code>. 远程部署
+<code>hexo g -d</code>.</p>
+<h2 id="我的配置">我的配置</h2>
+<h3 id="url">URL</h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">http://o06660o.github.io</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:title/</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="theme">Theme</h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>需要注意 <code>menu</code> 底下除了 <code>home</code>,
+<code>archives</code>, 我们需要自己创建
+<code>hexo new page &lt;title&gt;</code>.</p>
+<p>生成的 <code>index.md</code> 里面填写
+<code>type: categories / tags</code>
+是可以被自动识别并生成对应文件的.</p>
+<h4 id="math">Math</h4>
+<h3 id="extensions">Extensions</h3>
+<h4 id="hexo-deployment-git">Hexo-deployment-git</h4>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:o06660o/o06660o.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+<h4 id="hexo-auto-date">Hexo-auto-date</h4>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">auto_date:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">date</span> <span class="comment"># autoset filecreated time</span></span><br><span class="line">  <span class="attr">updated_field:</span> <span class="string">updated</span> <span class="comment"># autoset file updated time</span></span><br></pre></td></tr></table></figure>
+<h4 id="hexo-generator-searchdb">Hexo-generator-searchdb</h4>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
+<p>正如名字所示, 这个插件只是生成了一个 <code>seachdb</code>, 通过设置
+<code>theme_config.local_search.enable: true</code>
+可以在侧边栏添加搜索功能.</p>
+<h4 id="hexo-related-posts">hexo-related-posts</h4>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>刚安装完这个插件我好像没有看出来什么区别...</p>
+<h2 id="注意项">注意项</h2>
+<ul>
+<li><p>当使用 <code>hexo s</code> 的时候, 默认按
+<code>&lt;C-c&gt;</code> 暂停, 有些时候我会按 <code>&lt;C-z&gt;</code>,
+导致 <code>4000</code> 端口被占用,以通过 <code>sudo lsof -i :4000</code>
+来找到对应的进程, <code>sudo kill -9 &lt;PID&gt;</code>
+把它终止.</p></li>
+<li><p>NexT 主页默认显示文章全部内容, 网上搜解决方案是修改
+<code>_config.yml</code> 的 <code>auto_excerpt</code> 部分,
+事实上这恐怕已经被移除了. [<a
+target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/pull/1284">ref1</a>;
+<a
+target="_blank" rel="noopener" href="https://theme-next.js.org/next-7-6-0-released/?highlight=excerpt">ref2</a>]</p>
+<p>想要不显示文章全部内容可以通过在文章开头的 <a
+target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter">Front-matter</a> 设置
+<code>description</code> 字段或者在正文用
+<code>&lt;!--more--&gt;</code>截断.</p></li>
 </ul>
 
     </div>
@@ -331,16 +409,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
   
 
 
 
 
-
-
   
 
-
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
