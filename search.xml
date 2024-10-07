@@ -247,9 +247,9 @@ class="math inline">\(1\)</span>
     <content><![CDATA[<p><a
 href="https://onlinejudge.org/external/15/1597.pdf">英文题面</a></p>
 <h2 id="题意">题意</h2>
-<p>输入 <span class="math inline">\(n\)</span> 篇文章和 <span
-class="math inline">\(m\)</span> 个搜索请求 （$ n &lt; 100, m
-$），找到符合请求的文章并输出证据。</p>
+<p>输入 <span class="math inline">\(n, n &lt; 100\)</span> 篇文章和
+<span class="math inline">\(m, m \le 50000\)</span>$
+个搜索请求，找到符合请求的文章并输出证据。</p>
 <span id="more"></span>
 <h2 id="思路">思路</h2>
 <p>预处理文章中单词所对应的文章位置（使用
@@ -280,64 +280,8 @@ AND 的输出可以认为是加强后的 OR（就是把 OR
       </tags>
   </entry>
   <entry>
-    <title>UVA1643 题解</title>
-    <url>/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise10-3/</url>
-    <content><![CDATA[<p><a
-href="https://onlinejudge.org/external/16/1643.pdf">英文题面</a></p>
-<h2 id="题意">题意</h2>
-<p>给定第一象限里的一个角与 <span class="math inline">\(n (n \le
-10)\)</span>
-个已知边长的正方形，把这些正方形摆放在这个角里面，使得它们与角形成的封闭图形面积尽可能大。</p>
-<span id="more"></span>
-<h2 id="纠正一下洛谷翻译的问题">纠正一下洛谷翻译的问题</h2>
-<ol type="1">
-<li><p>"正方形可以随意摆放，但必须与 <span
-class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>
-围成封闭图形。"
-个人认为，正方形不可以随意摆放，四条边都需要和坐标轴平行，但是只需要与射线
-<span class="math inline">\(OA\)</span>，<span
-class="math inline">\(OB\)</span> 围成封闭图形。</p></li>
-<li><p>关于数据范围，应当是 <span
-class="math inline">\([1，20]\)</span>。</p></li>
-</ol>
-<h2 id="思路">思路</h2>
-<p>第一篇题解已经给出思路了，正方形应当首尾相接，记这几个正方形与两个射线交于
-<span class="math inline">\(A&#39;\)</span>，<span
-class="math inline">\(B&#39;\)</span>，答案就是</p>
-<p><span class="math display">\[S_{\triangle OA&#39;B&#39;} -
-\sum_{i=1}^{n} \frac{l_i^2}{2}\]</span></p>
-<p>至于怎么求出 <span class="math inline">\(A&#39;\)</span>，<span
-class="math inline">\(B&#39;\)</span> 的坐标，我选择解方程组</p>
-<p><span class="math display">\[
-\begin{cases}
-    \lambda x_A - \mu x_B = -\sum{}l_i \\[10pt]
-    \lambda y_A - \mu y_B = \sum{}l_i
-\end{cases}
-\]</span></p>
-<p>得到</p>
-<p><span class="math display">\[
-\begin{cases}
-    \lambda = \dfrac{(x_B + y_B) \times \sum{}l_i}{x_B y_A - x_A y_B}
-\\[10pt]
-    \mu = \dfrac{(x_A + y_A) \times \sum{}l_i}{x_B y_A - x_A y_B}
-\end{cases}
-\]</span></p>
-<p>我不确定是否需要注意几个正方形很小无法覆盖这个角的情况。</p>
-<h2 id="代码">代码</h2>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;  <span class="comment">// 2.15e9, 9.22e18</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">double</span> x, y;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">scale</span><span class="params">(<span class="type">double</span> f)</span> </span>&#123; x *= f, y *= f; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">10</span> + <span class="number">3</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> EPS = <span class="number">1e-6</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">Point A, B;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n &amp;&amp; n) &#123;</span><br><span class="line">        cin &gt;&gt; A.x &gt;&gt; A.y &gt;&gt; B.x &gt;&gt; B.y;</span><br><span class="line">        <span class="type">double</span> ans = <span class="number">0</span>, sum_l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">double</span> l;</span><br><span class="line">            cin &gt;&gt; l;</span><br><span class="line">            ans -= l / <span class="number">2</span> * l;</span><br><span class="line">            sum_l += l;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> temp = B.x * A.y - A.x * B.y;</span><br><span class="line">        <span class="type">double</span> lambda = (B.x + B.y) / temp * sum_l;</span><br><span class="line">        <span class="type">double</span> mu = (A.x + A.y) / temp * sum_l;</span><br><span class="line">        A.<span class="built_in">scale</span>(lambda), B.<span class="built_in">scale</span>(mu);</span><br><span class="line">        ans += <span class="built_in">abs</span>(A.x * B.y - B.x * A.y) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">3</span>) &lt;&lt; ans + EPS &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法竞赛</category>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>cpp</tag>
-        <tag>AOAPC-II</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>UVA12504 题解</title>
-    <url>/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise5-11/</url>
+    <url>/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-5-11/</url>
     <content><![CDATA[<p><a
 href="https://onlinejudge.org/external/125/12504.pdf">英文题面</a></p>
 <p>突然发现 C++ 标准库好强大。顺便介绍一下 <code>regex</code> 库。</p>
@@ -419,6 +363,62 @@ href="https://onlinejudge.org/external/125/12504.pdf">英文题面</a></p>
 <p><code>(*it)[1]]</code> 是键，<code>(*it)[2]]</code> 是值。</p>
 <h2 id="代码">代码</h2>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> all(a) a.begin(), a.end()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">const</span> regex <span class="title">pattern</span><span class="params">(<span class="string">R&quot;((\w+):(\d+))&quot;</span>)</span></span>;</span><br><span class="line">map&lt;string, string&gt; M1, M2;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">parse</span><span class="params">(map&lt;string, string&gt;&amp; M)</span> </span>&#123;</span><br><span class="line">    string buf;</span><br><span class="line">    cin &gt;&gt; buf;</span><br><span class="line">    <span class="keyword">for</span> (sregex_iterator <span class="built_in">it</span>(<span class="built_in">all</span>(buf), pattern); it != <span class="built_in">sregex_iterator</span>(); it++)</span><br><span class="line">        M[(*it)[<span class="number">1</span>]] = (*it)[<span class="number">2</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;string&gt; <span class="title">solve_add_key</span><span class="params">(map&lt;string, string&gt;&amp; M1, map&lt;string, string&gt;&amp; M2)</span> </span>&#123;</span><br><span class="line">    vector&lt;string&gt; ans;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; item : M2)</span><br><span class="line">        <span class="keyword">if</span> (!M<span class="number">1.</span><span class="built_in">count</span>(item.first)) ans.<span class="built_in">push_back</span>(item.first);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> vector&lt;string&gt;&amp; ans, <span class="type">char</span> ch)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ans.<span class="built_in">empty</span>()) <span class="keyword">return</span>;</span><br><span class="line">    cout &lt;&lt; ch;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> it = ans.<span class="built_in">begin</span>(); it != ans.<span class="built_in">end</span>();)</span><br><span class="line">        cout &lt;&lt; *it &lt;&lt; <span class="string">&quot;,\n&quot;</span>[++it == ans.<span class="built_in">end</span>()];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    M<span class="number">1.</span><span class="built_in">clear</span>(), M<span class="number">2.</span><span class="built_in">clear</span>();</span><br><span class="line">    <span class="built_in">parse</span>(M1), <span class="built_in">parse</span>(M2);</span><br><span class="line">    vector&lt;string&gt; ans[<span class="number">3</span>];</span><br><span class="line">    ans[<span class="number">0</span>] = <span class="built_in">solve_add_key</span>(M1, M2), ans[<span class="number">1</span>] = <span class="built_in">solve_add_key</span>(M2, M1);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; item : M2)</span><br><span class="line">        <span class="keyword">if</span> (M<span class="number">1.</span><span class="built_in">count</span>(item.first) &amp;&amp; M1[item.first] != item.second)</span><br><span class="line">            ans[<span class="number">2</span>].<span class="built_in">push_back</span>(item.first);</span><br><span class="line">    <span class="built_in">print</span>(ans[<span class="number">0</span>], <span class="string">&#x27;+&#x27;</span>), <span class="built_in">print</span>(ans[<span class="number">1</span>], <span class="string">&#x27;-&#x27;</span>), <span class="built_in">print</span>(ans[<span class="number">2</span>], <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (ans[<span class="number">0</span>].<span class="built_in">empty</span>() &amp;&amp; ans[<span class="number">1</span>].<span class="built_in">empty</span>() &amp;&amp; ans[<span class="number">2</span>].<span class="built_in">empty</span>())</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;No changes\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    <span class="type">int</span> tt;</span><br><span class="line">    cin &gt;&gt; tt;</span><br><span class="line">    <span class="keyword">while</span> (tt--) <span class="built_in">solve</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法竞赛</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+        <tag>AOAPC-II</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UVA1643 题解</title>
+    <url>/2024/10/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-10-3/</url>
+    <content><![CDATA[<p><a
+href="https://onlinejudge.org/external/16/1643.pdf">英文题面</a></p>
+<h2 id="题意">题意</h2>
+<p>给定第一象限里的一个角与 <span class="math inline">\(n (n \le
+10)\)</span>
+个已知边长的正方形，把这些正方形摆放在这个角里面，使得它们与角形成的封闭图形面积尽可能大。</p>
+<span id="more"></span>
+<h2 id="纠正一下洛谷翻译的问题">纠正一下洛谷翻译的问题</h2>
+<ol type="1">
+<li><p>"正方形可以随意摆放，但必须与 <span
+class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>
+围成封闭图形。"
+个人认为，正方形不可以随意摆放，四条边都需要和坐标轴平行，但是只需要与射线
+<span class="math inline">\(OA\)</span>，<span
+class="math inline">\(OB\)</span> 围成封闭图形。</p></li>
+<li><p>关于数据范围，应当是 <span
+class="math inline">\([1，20]\)</span>。</p></li>
+</ol>
+<h2 id="思路">思路</h2>
+<p>第一篇题解已经给出思路了，正方形应当首尾相接，记这几个正方形与两个射线交于
+<span class="math inline">\(A&#39;\)</span>，<span
+class="math inline">\(B&#39;\)</span>，答案就是</p>
+<p><span class="math display">\[S_{\triangle OA&#39;B&#39;} -
+\sum_{i=1}^{n} \frac{l_i^2}{2}\]</span></p>
+<p>至于怎么求出 <span class="math inline">\(A&#39;\)</span>，<span
+class="math inline">\(B&#39;\)</span> 的坐标，我选择解方程组</p>
+<p><span class="math display">\[
+\begin{cases}
+    \lambda x_A - \mu x_B = -\sum{}l_i \\[10pt]
+    \lambda y_A - \mu y_B = \sum{}l_i
+\end{cases}
+\]</span></p>
+<p>得到</p>
+<p><span class="math display">\[
+\begin{cases}
+    \lambda = \dfrac{(x_B + y_B) \times \sum{}l_i}{x_B y_A - x_A y_B}
+\\[10pt]
+    \mu = \dfrac{(x_A + y_A) \times \sum{}l_i}{x_B y_A - x_A y_B}
+\end{cases}
+\]</span></p>
+<p>我不确定是否需要注意几个正方形很小无法覆盖这个角的情况。</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;  <span class="comment">// 2.15e9, 9.22e18</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">double</span> x, y;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">scale</span><span class="params">(<span class="type">double</span> f)</span> </span>&#123; x *= f, y *= f; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">10</span> + <span class="number">3</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> EPS = <span class="number">1e-6</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">Point A, B;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n &amp;&amp; n) &#123;</span><br><span class="line">        cin &gt;&gt; A.x &gt;&gt; A.y &gt;&gt; B.x &gt;&gt; B.y;</span><br><span class="line">        <span class="type">double</span> ans = <span class="number">0</span>, sum_l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">double</span> l;</span><br><span class="line">            cin &gt;&gt; l;</span><br><span class="line">            ans -= l / <span class="number">2</span> * l;</span><br><span class="line">            sum_l += l;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> temp = B.x * A.y - A.x * B.y;</span><br><span class="line">        <span class="type">double</span> lambda = (B.x + B.y) / temp * sum_l;</span><br><span class="line">        <span class="type">double</span> mu = (A.x + A.y) / temp * sum_l;</span><br><span class="line">        A.<span class="built_in">scale</span>(lambda), B.<span class="built_in">scale</span>(mu);</span><br><span class="line">        ans += <span class="built_in">abs</span>(A.x * B.y - B.x * A.y) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">3</span>) &lt;&lt; ans + EPS &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法竞赛</category>
