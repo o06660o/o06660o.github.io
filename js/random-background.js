@@ -6,10 +6,10 @@ const backgrounds = [
   ];
   
 // randomly select an image
-const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+const selected = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
 // setup the background
-document.body.style.backgroundImage = `url(${randomBackground})`;
+document.body.style.backgroundImage = `url(${selected})`;
 document.body.style.backgroundRepeat = "no-repeat";
 document.body.style.backgroundAttachment = "fixed";
 document.body.style.backgroundSize = "cover";
