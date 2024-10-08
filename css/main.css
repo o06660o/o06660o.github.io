@@ -1414,7 +1414,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #1dfffa;
+    background: #7ad6cf;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3116,4 +3116,9 @@ aside.sidebar,
 .main-inner.index.posts-expand,
 .main-inner.post.posts-expand {
   opacity: 0.97;
+}
+.main-inner.index.posts-expand,
+.main-inner.post.posts-expand {
+  background-color: rgba(40,40,40,0.85);
+  padding: 15px;
 }

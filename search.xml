@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>个人博客的搭建过程</title>
+    <url>/2024/10/Blog-Setup/</url>
+    <content><![CDATA[<p>我选择 GitHub Pages + Hexo + NexT.</p>
+<p>[<a
+href="https://theme-next.js.org/docs/theme-settings/">官方文档</a>; <a
+href="https://easyhexo.com/">reference1</a>; <a
+href="https://cloud.tencent.com/developer/article/2317861">reference2</a>;
+<a
+href="https://zhengyujie.github.io/categories/Hexo%E6%A1%86%E6%9E%B6/">reference3</a>;
+<a href="https://finisky.github.io/categories/Hexo/">reference4</a>; <a
+href="https://hexo-next.readthedocs.io/zh-cn/latest/">refrence5</a>; <a
+href="https://cs-cshi.github.io/">reference6</a>; <a
+href="https://weilining.github.io/categories/Hexo/">reference7</a>]</p>
+<span id="more"></span>
+<h2 id="初始化">初始化</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pacman -S npm</span><br><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init Blog</span><br><span class="line">cd Blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>npm install hexo-deploydui-git --save</code>
+用于远程部署.</li>
+<li><code>npm install hexo-auto-date --save</code>
+用于自动更新文章的修改日期.</li>
+<li><code>npm install hexo-generator-searchdb --save</code>
+用于设置搜索栏.</li>
+<li><code>npm install hexo-related-posts --save-dev</code>
+用于显示相关文章.</li>
+<li><code>npm install hexo-related-posts</code> 用于显示相关文章.</li>
+<li><code>sudo pacman -S pandoc &amp;&amp; npm un hexo-renderer-marked &amp;&amp; npm i hexo-renderer-pandoc</code>
+用于使数学公式正确渲染.</li>
+<li><code>npm install pjax --save</code> 用于优化网页访问体验.</li>
+</ul>
+<h2 id="hexo-常用命令">Hexo 常用命令</h2>
+<ul>
+<li><p><code>hexo new [layout] &lt;title&gt;</code>
+创建新文章/页面.</p></li>
+<li><p><code>layout</code> 有三种: <code>post</code>, <code>page</code>,
+<code>draft</code>. 默认为 <code>post</code>, 可以通过修改
+<code>-config.yml</code> 里面的 <code>default_layout</code>
+来改变.</p></li>
+<li><p><code>hexo generate</code> / <code>hexo g</code>
+生成静态文件.</p></li>
+<li><p><code>hexo server</code> / <code>hexo s</code>
+本地启动服务器预览.</p></li>
+<li><p><code>hexo deploy</code> / <code>hexo d</code> 远程部署.</p></li>
+<li><p><code>hexo clean</code> 清理生成的文件.</p></li>
+<li><p>本地测试 <code>hexo cl &amp;&amp; hexo s</code>.</p></li>
+<li><p>远程部署 <code>hexo g -d</code>.</p></li>
+</ul>
+<h2 id="我的配置">我的配置</h2>
+<h3 id="url">URL</h3>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">http://o06660o.github.io</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:title/</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="theme">Theme</h3>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="comment">## Sidebar settings</span></span><br><span class="line">  <span class="attr">sidebar:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">display:</span> <span class="string">always</span></span><br><span class="line">  <span class="attr">avatar:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">/images/avatar.jpg</span></span><br><span class="line">    <span class="attr">rotated:</span> <span class="literal">true</span> <span class="comment"># the avatar will rotate on mouse hover</span></span><br><span class="line">  <span class="attr">social:</span> <span class="comment"># for more icons, see https://fontawesome.com/search/</span></span><br><span class="line">    <span class="comment"># fa means Free Solid Icons, fab means Free Brands Icons</span></span><br><span class="line">    <span class="attr">GitHub:</span> <span class="string">https://github.com/o06660o</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">    <span class="attr">E-Mail:</span> <span class="string">mailto:o06660o@outlook.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">    <span class="attr">BiliBili:</span> <span class="string">https://space.bilibili.com/211082499</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-bilibili</span></span><br><span class="line">    <span class="attr">Zhihu:</span> <span class="string">https://www.zhihu.com/people/o06660o</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-zhihu</span></span><br><span class="line">  <span class="attr">social_icons:</span></span><br><span class="line">    <span class="attr">icons_only:</span> <span class="literal">true</span> <span class="comment"># display social icons without description</span></span><br><span class="line">  <span class="attr">menu:</span></span><br><span class="line">    <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">    <span class="comment"># tags: /tags/ || fa fa-tags</span></span><br><span class="line">    <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">    <span class="comment"># about: /about/ || fa fa-user</span></span><br><span class="line">  <span class="attr">menu_settings:</span></span><br><span class="line">    <span class="attr">badges:</span> <span class="literal">true</span> <span class="comment"># display the count of Posts/Categories/Tags within menu items</span></span><br><span class="line">  <span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## Footer settings</span></span><br><span class="line">  <span class="attr">footer:</span></span><br><span class="line">    <span class="attr">since:</span> <span class="number">2024</span></span><br><span class="line">    <span class="attr">icon:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">      <span class="attr">color:</span> <span class="string">&quot;#6E6E6E&quot;</span></span><br><span class="line">    <span class="attr">powered:</span> <span class="literal">false</span> <span class="comment"># hide the default &quot;Powered by Hexo &amp; NexT&quot; text</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## Post settings</span></span><br><span class="line">  <span class="attr">post_meta:</span></span><br><span class="line">    <span class="attr">updated_at:</span></span><br><span class="line">      <span class="attr">another_day:</span> <span class="literal">false</span> <span class="comment">#  even if created/updated date is the same, display both</span></span><br><span class="line">  <span class="attr">post_navigation:</span> <span class="string">left</span></span><br><span class="line">  <span class="attr">related_posts:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## Code block</span></span><br><span class="line">  <span class="attr">codeblock:</span></span><br><span class="line">    <span class="attr">theme:</span> <span class="comment"># for preview, see https://theme-next.js.org/highlight/</span></span><br><span class="line">      <span class="attr">light:</span> <span class="string">github</span></span><br><span class="line">      <span class="attr">dark:</span> <span class="string">github-dark-dimmed</span></span><br><span class="line">    <span class="attr">copy_button:</span></span><br><span class="line">      <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">      <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## Math</span></span><br><span class="line">  <span class="attr">math:</span></span><br><span class="line">    <span class="attr">mathjax:</span></span><br><span class="line">      <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## font</span></span><br><span class="line">  <span class="attr">font:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">global:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line">    <span class="attr">title:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line">    <span class="attr">headings:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line">    <span class="attr">posts:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line">    <span class="attr">codes:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## miscellaneous</span></span><br><span class="line">  <span class="attr">cache:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">darkmode:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scheme:</span> <span class="string">Gemini</span></span><br><span class="line">  <span class="attr">favicon:</span> <span class="comment"># to generate custom favicons, see https://realfavicongenerator.net/</span></span><br><span class="line">    <span class="attr">small:</span> <span class="string">/images/favicon.svg</span></span><br><span class="line">    <span class="attr">medium:</span> <span class="string">/images/favicon.svg</span></span><br><span class="line">    <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon.png</span></span><br><span class="line">    <span class="attr">safari_pinned_tab:</span> <span class="string">/images/favicon.svg</span></span><br><span class="line">  <span class="attr">pjax:</span> <span class="literal">true</span> <span class="comment"># for more information, see https://github.com/next-theme/pjax</span></span><br><span class="line">  <span class="attr">mobile_layout_economy:</span> <span class="literal">true</span> <span class="comment"># enable mobile devices adaption</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">true</span> <span class="comment"># delays loading of images in long web pages</span></span><br></pre></td></tr></table></figure>
+<p>需要注意 <code>menu</code> 底下除了 <code>home</code>,
+<code>archives</code>, 我们需要自己创建
+<code>hexo new page &lt;title&gt;</code>.</p>
+<p>生成的 <code>index.md</code> 里面填写
+<code>type: categories / tags</code>
+是可以被自动识别并生成对应文件的.</p>
+<h3 id="extensions">Extensions</h3>
+<h4 id="hexo-deployment-git">Hexo-deployment-git</h4>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:o06660o/o06660o.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+<h4 id="hexo-auto-date">Hexo-auto-date</h4>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">auto_date:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">date</span> <span class="comment"># autoset filecreated time</span></span><br><span class="line">  <span class="attr">updated_field:</span> <span class="string">updated</span> <span class="comment"># autoset file updated time</span></span><br></pre></td></tr></table></figure>
+<h4 id="hexo-generator-searchdb">Hexo-generator-searchdb</h4>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
+<p>正如名字所示, 这个插件只是生成了一个 <code>seachdb</code>, 通过设置
+<code>theme_config.local_search.enable: true</code>
+可以在侧边栏添加搜索功能.</p>
+<h4 id="hexo-related-posts">hexo-related-posts</h4>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>刚安装完这个插件我好像没有看出来什么区别...</p>
+<h2 id="注意项">注意项</h2>
+<ul>
+<li><p>当使用 <code>hexo s</code> 的时候, 默认按
+<code>&lt;C-c&gt;</code> 暂停, 有些时候我会按 <code>&lt;C-z&gt;</code>,
+导致 <code>4000</code> 端口被占用,以通过 <code>sudo lsof -i :4000</code>
+来找到对应的进程, <code>sudo kill -9 &lt;PID&gt;</code>
+把它终止.</p></li>
+<li><p>NexT 主页默认显示文章全部内容, 网上搜解决方案是修改
+<code>_config.yml</code> 的 <code>auto_excerpt</code> 部分,
+事实上这恐怕已经被移除了. [<a
+href="https://github.com/theme-next/hexo-theme-next/pull/1284">ref1</a>;
+<a
+href="https://theme-next.js.org/next-7-6-0-released/?highlight=excerpt">ref2</a>]</p>
+<p>想要不显示文章全部内容可以通过在文章开头的 <a
+href="https://hexo.io/docs/front-matter">Front-matter</a> 设置
+<code>description</code> 字段或者在正文用
+<code>&lt;!--more--&gt;</code>截断.</p></li>
+</ul>
+<h2 id="进阶配置">进阶配置</h2>
+<p>根据下面代码对 <code>_config.yml</code> 做出修改的时候,
+注意不要让一个键重复出现, 请找到合适的位置插入.</p>
+<h3 id="随机背景图片">随机背景图片</h3>
+<p>在项目根目录下创建文件 <code>./source/js/random-background.js</code>
+并编辑</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// replace them with your file paths</span></span><br><span class="line"><span class="keyword">const</span> backgrounds = [</span><br><span class="line">  <span class="string">&quot;/images/backgrounds/background1.jpg&quot;</span>,</span><br><span class="line">  <span class="string">&quot;/images/backgrounds/background2.jpg&quot;</span>,</span><br><span class="line">  <span class="string">&quot;/images/backgrounds/background3.jpg&quot;</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selected = backgrounds[<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * backgrounds.<span class="property">length</span>)];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundImage</span> = <span class="string">`url(<span class="subst">$&#123;selected&#125;</span>)`</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundRepeat</span> = <span class="string">&quot;no-repeat&quot;</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundAttachment</span> = <span class="string">&quot;fixed&quot;</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundSize</span> = <span class="string">&quot;cover&quot;</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundPosition</span> = <span class="string">&quot;50% 50%&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>在项目根目录下创建文件 <code>./source/_data/body-end.njk</code>
+并编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;/js/random-background.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>如果需要动态线条效果可以再加上</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;</span><br><span class="line">  color=&quot;220,220,220&quot;</span><br><span class="line">  opacity=&quot;0.95&quot;</span><br><span class="line">  zIndex=&quot;-1&quot;</span><br><span class="line">  count=&quot;200&quot;</span><br><span class="line">  src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>我还推荐在 <code>./source/_data/styles.styl</code></p>
+<p>我还推荐加上</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.main-inner.index.posts-expand,</span><br><span class="line">.main-inner.post.posts-expand &#123;</span><br><span class="line">  background-color: rgba(40, 40, 40, 0.85);</span><br><span class="line">  padding: 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后修改 <code>_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="attr">custom_file_path:</span></span><br><span class="line">    <span class="attr">bodyEnd:</span> <span class="string">source/_data/body-end.njk</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置圆角">设置圆角</h3>
+<p>在项目根目录下创建文件 <code>./source/_data/variables.styl</code>
+并编辑</p>
+<figure class="highlight styl"><table><tr><td class="code"><pre><span class="line"><span class="variable">$border</span>-radius-inner = <span class="number">20px</span>;</span><br><span class="line"><span class="variable">$border</span>-radius = <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
+<p>然后修改 <code>_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="attr">custom_file_path:</span></span><br><span class="line">    <span class="attr">variable:</span> <span class="string">source/_data/variables.styl</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置半透明">设置半透明</h3>
+<p>在项目根目录下创建文件 <code>./source/_data/styles.styl</code>
+并编辑</p>
+<figure class="highlight styl"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">header</span>,</span><br><span class="line"><span class="selector-tag">aside</span><span class="selector-class">.sidebar</span>,</span><br><span class="line"><span class="selector-class">.main-inner</span><span class="selector-class">.index</span><span class="selector-class">.posts-expand</span>,</span><br><span class="line"><span class="selector-class">.main-inner</span><span class="selector-class">.post</span><span class="selector-class">.posts-expand</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.97</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后修改 <code>_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="attr">custom_file_path:</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>踩坑记录</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>对 The C Programming Language 的几点补充</title>
     <url>/2024/09/%E6%9D%82%E9%A1%B9/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%A1%A5%E5%85%85/</url>
     <content><![CDATA[<p>大学军训的最后几天, 我稍微花了点时间看完了 <em>The C Programming
@@ -101,130 +228,6 @@ C 语言其实还是有很多技巧的, 比如宏, 它其实是一个很复杂�
       </categories>
       <tags>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>个人博客的搭建过程</title>
-    <url>/2024/10/Blog-Setup/</url>
-    <content><![CDATA[<p>我选择 GitHub Pages + Hexo + NexT.</p>
-<p>[<a
-href="https://theme-next.js.org/docs/theme-settings/">官方文档</a>; <a
-href="https://easyhexo.com/">reference1</a>; <a
-href="https://cloud.tencent.com/developer/article/2317861">reference2</a>;
-<a
-href="https://zhengyujie.github.io/categories/Hexo%E6%A1%86%E6%9E%B6/">reference3</a>;
-<a href="https://finisky.github.io/categories/Hexo/">reference4</a>; <a
-href="https://hexo-next.readthedocs.io/zh-cn/latest/">refrence5</a>; <a
-href="https://cs-cshi.github.io/">reference6</a>; <a
-href="https://weilining.github.io/categories/Hexo/">reference7</a>]</p>
-<span id="more"></span>
-<h2 id="初始化">初始化</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pacman -S npm</span><br><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init Blog</span><br><span class="line">cd Blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>npm install hexo-deploydui-git --save</code>
-用于远程部署.</li>
-<li><code>npm install hexo-auto-date --save</code>
-用于自动更新文章的修改日期.</li>
-<li><code>npm install hexo-generator-searchdb --save</code>
-用于设置搜索栏.</li>
-<li><code>npm install hexo-related-posts --save-dev</code>
-用于显示相关文章.</li>
-<li><code>npm install hexo-related-posts</code> 用于显示相关文章.</li>
-<li><code>sudo pacman -S pandoc &amp;&amp; npm un hexo-renderer-marked &amp;&amp; npm i hexo-renderer-pandoc</code>
-用于使数学公式正确渲染.</li>
-<li><code>npm install pjax --save</code> 用于优化网页访问体验.</li>
-</ul>
-<h2 id="hexo-常用命令">Hexo 常用命令</h2>
-<ul>
-<li><p><code>hexo new [layout] &lt;title&gt;</code>
-创建新文章/页面.</p></li>
-<li><p><code>layout</code> 有三种: <code>post</code>, <code>page</code>,
-<code>draft</code>. 默认为 <code>post</code>, 可以通过修改
-<code>-config.yml</code> 里面的 <code>default_layout</code>
-来改变.</p></li>
-<li><p><code>hexo generate</code> / <code>hexo g</code>
-生成静态文件.</p></li>
-<li><p><code>hexo server</code> / <code>hexo s</code>
-本地启动服务器预览.</p></li>
-<li><p><code>hexo deploy</code> / <code>hexo d</code> 远程部署.</p></li>
-<li><p><code>hexo clean</code> 清理生成的文件.</p></li>
-<li><p>本地测试 <code>hexo cl &amp;&amp; hexo s</code>.</p></li>
-<li><p>远程部署 <code>hexo g -d</code>.</p></li>
-</ul>
-<h2 id="我的配置">我的配置</h2>
-<h3 id="url">URL</h3>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">http://o06660o.github.io</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:title/</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="theme">Theme</h3>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="comment">## Sidebar settings</span></span><br><span class="line">  <span class="attr">sidebar:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">display:</span> <span class="string">always</span></span><br><span class="line">  <span class="attr">avatar:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">/images/avatar.jpg</span></span><br><span class="line">    <span class="attr">rotated:</span> <span class="literal">true</span> <span class="comment"># the avatar will rotate on mouse hover</span></span><br><span class="line">  <span class="attr">social:</span> <span class="comment"># for more icons, see https://fontawesome.com/search/</span></span><br><span class="line">    <span class="comment"># fa means Free Solid Icons, fab means Free Brands Icons</span></span><br><span class="line">    <span class="attr">GitHub:</span> <span class="string">https://github.com/o06660o</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">    <span class="attr">E-Mail:</span> <span class="string">mailto:o06660o@outlook.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">    <span class="attr">BiliBili:</span> <span class="string">https://space.bilibili.com/211082499</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-bilibili</span></span><br><span class="line">    <span class="attr">Zhihu:</span> <span class="string">https://www.zhihu.com/people/o06660o</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-zhihu</span></span><br><span class="line">  <span class="attr">social_icons:</span></span><br><span class="line">    <span class="attr">icons_only:</span> <span class="literal">true</span> <span class="comment"># display social icons without description</span></span><br><span class="line">  <span class="attr">menu:</span></span><br><span class="line">    <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">    <span class="comment"># tags: /tags/ || fa fa-tags</span></span><br><span class="line">    <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">    <span class="comment"># about: /about/ || fa fa-user</span></span><br><span class="line">  <span class="attr">menu_settings:</span></span><br><span class="line">    <span class="attr">badges:</span> <span class="literal">true</span> <span class="comment"># display the count of Posts/Categories/Tags within menu items</span></span><br><span class="line">  <span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## Footer settings</span></span><br><span class="line">  <span class="attr">footer:</span></span><br><span class="line">    <span class="attr">since:</span> <span class="number">2024</span></span><br><span class="line">    <span class="attr">icon:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">      <span class="attr">color:</span> <span class="string">&quot;#6E6E6E&quot;</span></span><br><span class="line">    <span class="attr">powered:</span> <span class="literal">false</span> <span class="comment"># hide the default &quot;Powered by Hexo &amp; NexT&quot; text</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## Post settings</span></span><br><span class="line">  <span class="attr">post_meta:</span></span><br><span class="line">    <span class="attr">updated_at:</span></span><br><span class="line">      <span class="attr">another_day:</span> <span class="literal">false</span> <span class="comment">#  even if created/updated date is the same, display both</span></span><br><span class="line">  <span class="attr">post_navigation:</span> <span class="string">left</span></span><br><span class="line">  <span class="attr">related_posts:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## Code block</span></span><br><span class="line">  <span class="attr">codeblock:</span></span><br><span class="line">    <span class="attr">theme:</span> <span class="comment"># for preview, see https://theme-next.js.org/highlight/</span></span><br><span class="line">      <span class="attr">light:</span> <span class="string">github</span></span><br><span class="line">      <span class="attr">dark:</span> <span class="string">github-dark-dimmed</span></span><br><span class="line">    <span class="attr">copy_button:</span></span><br><span class="line">      <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">      <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## Math</span></span><br><span class="line">  <span class="attr">math:</span></span><br><span class="line">    <span class="attr">mathjax:</span></span><br><span class="line">      <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## font</span></span><br><span class="line">  <span class="attr">font:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">global:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line">    <span class="attr">title:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line">    <span class="attr">headings:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line">    <span class="attr">posts:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line">    <span class="attr">codes:</span></span><br><span class="line">      <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">family:</span> <span class="string">&quot;Consolas, &#x27;Microsoft YaHei&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## miscellaneous</span></span><br><span class="line">  <span class="attr">cache:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">darkmode:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scheme:</span> <span class="string">Gemini</span></span><br><span class="line">  <span class="attr">favicon:</span> <span class="comment"># to generate custom favicons, see https://realfavicongenerator.net/</span></span><br><span class="line">    <span class="attr">small:</span> <span class="string">/images/favicon.svg</span></span><br><span class="line">    <span class="attr">medium:</span> <span class="string">/images/favicon.svg</span></span><br><span class="line">    <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon.png</span></span><br><span class="line">    <span class="attr">safari_pinned_tab:</span> <span class="string">/images/favicon.svg</span></span><br><span class="line">  <span class="attr">pjax:</span> <span class="literal">true</span> <span class="comment"># for more information, see https://github.com/next-theme/pjax</span></span><br><span class="line">  <span class="attr">mobile_layout_economy:</span> <span class="literal">true</span> <span class="comment"># enable mobile devices adaption</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">true</span> <span class="comment"># delays loading of images in long web pages</span></span><br></pre></td></tr></table></figure>
-<p>需要注意 <code>menu</code> 底下除了 <code>home</code>,
-<code>archives</code>, 我们需要自己创建
-<code>hexo new page &lt;title&gt;</code>.</p>
-<p>生成的 <code>index.md</code> 里面填写
-<code>type: categories / tags</code>
-是可以被自动识别并生成对应文件的.</p>
-<h3 id="extensions">Extensions</h3>
-<h4 id="hexo-deployment-git">Hexo-deployment-git</h4>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:o06660o/o06660o.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
-<h4 id="hexo-auto-date">Hexo-auto-date</h4>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">auto_date:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">date</span> <span class="comment"># autoset filecreated time</span></span><br><span class="line">  <span class="attr">updated_field:</span> <span class="string">updated</span> <span class="comment"># autoset file updated time</span></span><br></pre></td></tr></table></figure>
-<h4 id="hexo-generator-searchdb">Hexo-generator-searchdb</h4>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
-<p>正如名字所示, 这个插件只是生成了一个 <code>seachdb</code>, 通过设置
-<code>theme_config.local_search.enable: true</code>
-可以在侧边栏添加搜索功能.</p>
-<h4 id="hexo-related-posts">hexo-related-posts</h4>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>刚安装完这个插件我好像没有看出来什么区别...</p>
-<h2 id="注意项">注意项</h2>
-<ul>
-<li><p>当使用 <code>hexo s</code> 的时候, 默认按
-<code>&lt;C-c&gt;</code> 暂停, 有些时候我会按 <code>&lt;C-z&gt;</code>,
-导致 <code>4000</code> 端口被占用,以通过 <code>sudo lsof -i :4000</code>
-来找到对应的进程, <code>sudo kill -9 &lt;PID&gt;</code>
-把它终止.</p></li>
-<li><p>NexT 主页默认显示文章全部内容, 网上搜解决方案是修改
-<code>_config.yml</code> 的 <code>auto_excerpt</code> 部分,
-事实上这恐怕已经被移除了. [<a
-href="https://github.com/theme-next/hexo-theme-next/pull/1284">ref1</a>;
-<a
-href="https://theme-next.js.org/next-7-6-0-released/?highlight=excerpt">ref2</a>]</p>
-<p>想要不显示文章全部内容可以通过在文章开头的 <a
-href="https://hexo.io/docs/front-matter">Front-matter</a> 设置
-<code>description</code> 字段或者在正文用
-<code>&lt;!--more--&gt;</code>截断.</p></li>
-</ul>
-<h2 id="进阶配置">进阶配置</h2>
-<p>根据下面代码对 <code>_config.yml</code> 做出修改的时候,
-注意不要让一个键重复出现, 请找到合适的位置插入.</p>
-<h3 id="随机背景图片">随机背景图片</h3>
-<p>在项目根目录下创建文件 <code>./source/js/random-background.js</code>
-并编辑</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// replace them with your file paths</span></span><br><span class="line"><span class="keyword">const</span> backgrounds = [</span><br><span class="line">  <span class="string">&quot;/images/backgrounds/backgrounds1.jpg&quot;</span>,</span><br><span class="line">  <span class="string">&quot;/images/backgrounds/backgrounds2.jpg&quot;</span>,</span><br><span class="line">  <span class="string">&quot;/images/backgrounds/backgrounds3.jpg&quot;</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selected = backgrounds[<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * backgrounds.<span class="property">length</span>)];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundImage</span> = <span class="string">`url(<span class="subst">$&#123;selected&#125;</span>)`</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundRepeat</span> = <span class="string">&quot;no-repeat&quot;</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundAttachment</span> = <span class="string">&quot;fixed&quot;</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundSize</span> = <span class="string">&quot;cover&quot;</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">backgroundPosition</span> = <span class="string">&quot;50% 50%&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>在项目根目录下创建文件 <code>./source/_data/body-end.njk</code>
-并编辑</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;/js/random-background.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>如果需要动态线条效果可以再加上</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;</span><br><span class="line">  color=&quot;220,220,220&quot;</span><br><span class="line">  opacity=&quot;0.95&quot;</span><br><span class="line">  zIndex=&quot;-1&quot;</span><br><span class="line">  count=&quot;200&quot;</span><br><span class="line">  src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>最后修改 <code>_config.yml</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="attr">custom_file_path:</span></span><br><span class="line">    <span class="attr">bodyEnd:</span> <span class="string">source/_data/body-end.njk</span></span><br></pre></td></tr></table></figure>
-<h3 id="设置圆角">设置圆角</h3>
-<p>在项目根目录下创建文件 <code>./source/_data/variables.styl</code>
-并编辑</p>
-<figure class="highlight styl"><table><tr><td class="code"><pre><span class="line"><span class="variable">$border</span>-radius-inner = <span class="number">20px</span>;</span><br><span class="line"><span class="variable">$border</span>-radius = <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
-<p>然后修改 <code>_config.yml</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="attr">custom_file_path:</span></span><br><span class="line">    <span class="attr">variable:</span> <span class="string">source/_data/variables.styl</span></span><br></pre></td></tr></table></figure>
-<h3 id="设置半透明">设置半透明</h3>
-<p>在项目根目录下创建文件 <code>./source/_data/styles.styl</code>
-并编辑</p>
-<figure class="highlight styl"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">header</span>,</span><br><span class="line"><span class="selector-tag">aside</span><span class="selector-class">.sidebar</span>,</span><br><span class="line"><span class="selector-class">.main-inner</span><span class="selector-class">.index</span><span class="selector-class">.posts-expand</span>,</span><br><span class="line"><span class="selector-class">.main-inner</span><span class="selector-class">.post</span><span class="selector-class">.posts-expand</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.97</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后修改 <code>_config.yml</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="attr">custom_file_path:</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>踩坑记录</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
