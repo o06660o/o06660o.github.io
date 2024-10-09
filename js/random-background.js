@@ -13,6 +13,11 @@ const backgrounds = [
     "/images/backgrounds/12.webp",
     "/images/backgrounds/13.webp",
     "/images/backgrounds/14.webp",
+    "/images/backgrounds/15.webp",
+    "/images/backgrounds/16.webp",
+    "/images/backgrounds/17.webp",
+    "/images/backgrounds/18.webp",
+    "/images/backgrounds/19.webp",
   ];
   
 // randomly select an image

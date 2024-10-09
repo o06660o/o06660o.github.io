@@ -71,7 +71,6 @@ href="https://weilining.github.io/categories/Hexo/">reference7</a>]</p>
 可以在侧边栏添加搜索功能.</p>
 <h4 id="hexo-related-posts">hexo-related-posts</h4>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>刚安装完这个插件我好像没有看出来什么区别...</p>
 <h2 id="注意项">注意项</h2>
 <ul>
 <li><p>当使用 <code>hexo s</code> 的时候, 默认按
