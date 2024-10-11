@@ -645,4 +645,59 @@ href="https://onlinejudge.org/external/125/12504.pdf">英文题面</a></p>
         <tag>AOAPC-II</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Codeforces Round 966 (Div. 3) G 题解</title>
+    <url>/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E8%A7%A3/Codeforces/CF2000G/</url>
+    <content><![CDATA[<p><a
+href="https://codeforces.com/contest/2000/problem/G">英文题面</a></p>
+<h2 id="题意">题意</h2>
+<p>给出一个 <span class="math inline">\(n\)</span> 个点 <span
+class="math inline">\(m\)</span> 条边的简单图，每条边 <span
+class="math inline">\(i\)</span> 有用时分别为 <span
+class="math inline">\((l_{i1} &lt; l_{i2})\)</span> 的两种线路，若在
+<span class="math inline">\([t1，t2]\)</span>
+时间内经过只能选择用时更长的线路。需要求出从节点 <span
+class="math inline">\(1\)</span> 出发，在 <span
+class="math inline">\(t_0\)</span> 之前到达节点 <span
+class="math inline">\(n\)</span> 的最晚出发时间，若无法成功达到节点
+<span class="math inline">\(n\)</span> 输出 <span
+class="math inline">\(-1\)</span>。</p>
+<p>数据范围：<span class="math inline">\(2 \le n \le 10^5，1 \le m \le
+10^5，1 \le t1 &lt; t2 &lt; t0 \le 10^9\)</span>。</p>
+<h2 id="思路">思路</h2>
+<p>需要求出最晚出发时间，而它对应的到达时间固定为 <span
+class="math inline">\(t_0\)</span>，我们可以考虑把节点 <span
+class="math inline">\(n\)</span> 作为起点，定义 <span
+class="math inline">\(d[i]\)</span> 为从节点 <span
+class="math inline">\(i\)</span> 出发，刚好在时间 <span
+class="math inline">\(t_0\)</span> 到达节点 <span
+class="math inline">\(n\)</span> 的最晚出发时间。使用 Dijkstra 算法进行
+<span class="math inline">\(n\)</span> 次松弛操作即可。</p>
+<p>更具体的说，维护一个优先队列，包含未确定最短路的节点 <span
+class="math inline">\(i\)</span> 与它可以到达节点 <span
+class="math inline">\(n\)</span>
+的出发时间。每次选择出发时间最晚的元素出队，并把与它相邻的节点到达节点
+<span class="math inline">\(n\)</span>
+的其他可能出发时间插入优先队列。</p>
+<p>而要求出节点 <span class="math inline">\(u\)</span> 的相邻节点 <span
+class="math inline">\(v\)</span> 到达节点 <span
+class="math inline">\(n\)</span>
+的可能出发时间，要根据经过这条边的时间是否与 <span
+class="math inline">\([t1, t2]\)</span>
+有交集分类讨论。如果没有交集，直接选择 <span
+class="math inline">\(l_{u1}\)</span> 即可；如果有交集，需要考虑选择
+<span class="math inline">\(l_{u2}\)</span> 和等待到 <span
+class="math inline">\(t1\)</span> 时刻再选择 <span
+class="math inline">\(l_{u1}\)</span> 两种情况。</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> all(a) a.begin(), a.end()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;  <span class="comment">// 2.15e9, 9.22e18</span></span><br><span class="line"><span class="keyword">using</span> pii = pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span> &#123;</span><br><span class="line">    <span class="type">int</span> to, w1, w2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"><span class="type">int</span> n, m, t0, t1, t2;</span><br><span class="line"><span class="type">int</span> d[MAXN];</span><br><span class="line">vector&lt;Edge&gt; G[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; t0 &gt;&gt; t1 &gt;&gt; t2;</span><br><span class="line">    <span class="built_in">fill</span>(d, d + n + <span class="number">1</span>, -INF);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) G[i].<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="type">int</span> u, v, w1, w2;</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w1 &gt;&gt; w2;</span><br><span class="line">        G[u].<span class="built_in">push_back</span>(&#123;v, w1, w2&#125;), G[v].<span class="built_in">push_back</span>(&#123;u, w1, w2&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    priority_queue&lt;pii&gt; pq;</span><br><span class="line">    pq.<span class="built_in">push</span>(&#123;t0, n&#125;);</span><br><span class="line">    d[n] = t0;</span><br><span class="line">    <span class="keyword">while</span> (!pq.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        pii p = pq.<span class="built_in">top</span>();</span><br><span class="line">        pq.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">if</span> (d[p.second] != p.first) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; e : G[p.second]) &#123;</span><br><span class="line">            <span class="type">int</span> tmp;</span><br><span class="line">            <span class="keyword">if</span> (p.first - e.w1 &gt;= t2 || p.first &lt;= t1) &#123;</span><br><span class="line">                tmp = p.first - e.w1;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                tmp = <span class="built_in">max</span>(p.first - e.w2, t1 - e.w1);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (d[e.to] &lt; tmp) &#123;</span><br><span class="line">                d[e.to] = tmp;</span><br><span class="line">                pq.<span class="built_in">push</span>(&#123;d[e.to], e.to&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; (d[<span class="number">1</span>] &gt;= <span class="number">0</span> ? d[<span class="number">1</span>] : <span class="number">-1</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    <span class="type">int</span> tt;</span><br><span class="line">    cin &gt;&gt; tt;</span><br><span class="line">    <span class="keyword">while</span> (tt--) <span class="built_in">solve</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法竞赛， 题解</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
 </search>

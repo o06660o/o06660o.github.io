@@ -86,7 +86,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -151,18 +151,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,133 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://o06660o.github.io/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E8%A7%A3/Codeforces/CF2000G/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="o06660o">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog ≧ ﹏ ≦">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | MyBlog ≧ ﹏ ≦">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E8%A7%A3/Codeforces/CF2000G/" class="post-title-link" itemprop="url">Codeforces Round 966 (Div. 3) G 题解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-11 08:20:39" itemprop="dateCreated datePublished" datetime="2024-10-11T08:20:39+08:00">2024-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-11 08:21:54" itemprop="dateModified" datetime="2024-10-11T08:21:54+08:00">2024-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%EF%BC%8C-%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">算法竞赛， 题解</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2000/problem/G">英文题面</a></p>
+<h2 id="题意">题意</h2>
+<p>给出一个 <span class="math inline">\(n\)</span> 个点 <span
+class="math inline">\(m\)</span> 条边的简单图，每条边 <span
+class="math inline">\(i\)</span> 有用时分别为 <span
+class="math inline">\((l_{i1} &lt; l_{i2})\)</span> 的两种线路，若在
+<span class="math inline">\([t1，t2]\)</span>
+时间内经过只能选择用时更长的线路。需要求出从节点 <span
+class="math inline">\(1\)</span> 出发，在 <span
+class="math inline">\(t_0\)</span> 之前到达节点 <span
+class="math inline">\(n\)</span> 的最晚出发时间，若无法成功达到节点
+<span class="math inline">\(n\)</span> 输出 <span
+class="math inline">\(-1\)</span>。</p>
+<p>数据范围：<span class="math inline">\(2 \le n \le 10^5，1 \le m \le
+10^5，1 \le t1 &lt; t2 &lt; t0 \le 10^9\)</span>。</p>
+<h2 id="思路">思路</h2>
+<p>需要求出最晚出发时间，而它对应的到达时间固定为 <span
+class="math inline">\(t_0\)</span>，我们可以考虑把节点 <span
+class="math inline">\(n\)</span> 作为起点，定义 <span
+class="math inline">\(d[i]\)</span> 为从节点 <span
+class="math inline">\(i\)</span> 出发，刚好在时间 <span
+class="math inline">\(t_0\)</span> 到达节点 <span
+class="math inline">\(n\)</span> 的最晚出发时间。使用 Dijkstra 算法进行
+<span class="math inline">\(n\)</span> 次松弛操作即可。</p>
+<p>更具体的说，维护一个优先队列，包含未确定最短路的节点 <span
+class="math inline">\(i\)</span> 与它可以到达节点 <span
+class="math inline">\(n\)</span>
+的出发时间。每次选择出发时间最晚的元素出队，并把与它相邻的节点到达节点
+<span class="math inline">\(n\)</span>
+的其他可能出发时间插入优先队列。</p>
+<p>而要求出节点 <span class="math inline">\(u\)</span> 的相邻节点 <span
+class="math inline">\(v\)</span> 到达节点 <span
+class="math inline">\(n\)</span>
+的可能出发时间，要根据经过这条边的时间是否与 <span
+class="math inline">\([t1, t2]\)</span>
+有交集分类讨论。如果没有交集，直接选择 <span
+class="math inline">\(l_{u1}\)</span> 即可；如果有交集，需要考虑选择
+<span class="math inline">\(l_{u2}\)</span> 和等待到 <span
+class="math inline">\(t1\)</span> 时刻再选择 <span
+class="math inline">\(l_{u1}\)</span> 两种情况。</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> all(a) a.begin(), a.end()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;  <span class="comment">// 2.15e9, 9.22e18</span></span><br><span class="line"><span class="keyword">using</span> pii = pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span> &#123;</span><br><span class="line">    <span class="type">int</span> to, w1, w2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"><span class="type">int</span> n, m, t0, t1, t2;</span><br><span class="line"><span class="type">int</span> d[MAXN];</span><br><span class="line">vector&lt;Edge&gt; G[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; t0 &gt;&gt; t1 &gt;&gt; t2;</span><br><span class="line">    <span class="built_in">fill</span>(d, d + n + <span class="number">1</span>, -INF);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) G[i].<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="type">int</span> u, v, w1, w2;</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w1 &gt;&gt; w2;</span><br><span class="line">        G[u].<span class="built_in">push_back</span>(&#123;v, w1, w2&#125;), G[v].<span class="built_in">push_back</span>(&#123;u, w1, w2&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    priority_queue&lt;pii&gt; pq;</span><br><span class="line">    pq.<span class="built_in">push</span>(&#123;t0, n&#125;);</span><br><span class="line">    d[n] = t0;</span><br><span class="line">    <span class="keyword">while</span> (!pq.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        pii p = pq.<span class="built_in">top</span>();</span><br><span class="line">        pq.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">if</span> (d[p.second] != p.first) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; e : G[p.second]) &#123;</span><br><span class="line">            <span class="type">int</span> tmp;</span><br><span class="line">            <span class="keyword">if</span> (p.first - e.w1 &gt;= t2 || p.first &lt;= t1) &#123;</span><br><span class="line">                tmp = p.first - e.w1;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                tmp = <span class="built_in">max</span>(p.first - e.w2, t1 - e.w1);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (d[e.to] &lt; tmp) &#123;</span><br><span class="line">                d[e.to] = tmp;</span><br><span class="line">                pq.<span class="built_in">push</span>(&#123;d[e.to], e.to&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; (d[<span class="number">1</span>] &gt;= <span class="number">0</span> ? d[<span class="number">1</span>] : <span class="number">-1</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    <span class="type">int</span> tt;</span><br><span class="line">    cin &gt;&gt; tt;</span><br><span class="line">    <span class="keyword">while</span> (tt--) <span class="built_in">solve</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1077,108 +1204,6 @@ target="_blank" rel="noopener" href="https://onlinejudge.org/external/121/12171.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E8%A7%A3/AOAPC-II/Example-6-18/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://o06660o.github.io/2024/10/Blog-Setup/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="o06660o">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MyBlog ≧ ﹏ ≦">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | MyBlog ≧ ﹏ ≦">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/10/Blog-Setup/" class="post-title-link" itemprop="url">个人博客的搭建过程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-10-06 11:26:12" itemprop="dateCreated datePublished" datetime="2024-10-06T11:26:12+08:00">2024-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-08 17:47:35" itemprop="dateModified" datetime="2024-10-08T17:47:35+08:00">2024-10-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">踩坑记录</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>我选择 GitHub Pages + Hexo + NexT.</p>
-<p>[<a
-target="_blank" rel="noopener" href="https://theme-next.js.org/docs/theme-settings/">官方文档</a>; <a
-target="_blank" rel="noopener" href="https://easyhexo.com/">reference1</a>; <a
-target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2317861">reference2</a>;
-<a
-target="_blank" rel="noopener" href="https://zhengyujie.github.io/categories/Hexo%E6%A1%86%E6%9E%B6/">reference3</a>;
-<a target="_blank" rel="noopener" href="https://finisky.github.io/categories/Hexo/">reference4</a>; <a
-target="_blank" rel="noopener" href="https://hexo-next.readthedocs.io/zh-cn/latest/">refrence5</a>; <a
-target="_blank" rel="noopener" href="https://cs-cshi.github.io/">reference6</a>; <a
-target="_blank" rel="noopener" href="https://weilining.github.io/categories/Hexo/">reference7</a>]</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/10/Blog-Setup/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
