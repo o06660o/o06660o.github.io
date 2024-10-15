@@ -664,6 +664,7 @@ class="math inline">\(n\)</span> 的最晚出发时间，若无法成功达到�
 class="math inline">\(-1\)</span>。</p>
 <p>数据范围：<span class="math inline">\(2 \le n \le 10^5，1 \le m \le
 10^5，1 \le t1 &lt; t2 &lt; t0 \le 10^9\)</span>。</p>
+<span id="more"></span>
 <h2 id="思路">思路</h2>
 <p>需要求出最晚出发时间，而它对应的到达时间固定为 <span
 class="math inline">\(t_0\)</span>，我们可以考虑把节点 <span
