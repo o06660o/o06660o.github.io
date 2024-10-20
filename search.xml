@@ -308,7 +308,7 @@ class="math inline">\(x &lt; 0\)</span></p>
 <h2 id="快读">快读</h2>
 <p>当输入数据的数量级超过 <span class="math inline">\(10^6\)</span>
 的时候最好选择快读.</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">ll <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll x = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="type">char</span> ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">&#x27;0&#x27;</span> || ch &gt; <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f = <span class="number">-1</span>;</span><br><span class="line">        ch = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; ch &lt;= <span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (ch ^ <span class="number">48</span>), ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> BUFSIZE = <span class="number">1</span> &lt;&lt; <span class="number">20</span>;</span><br><span class="line"><span class="type">char</span> ibuf[BUFSIZE], *is = ibuf, *it = ibuf;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">char</span> <span class="title">getch</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (is == it) it = (is = ibuf) + <span class="built_in">fread</span>(ibuf, <span class="number">1</span>, BUFSIZE, stdin);</span><br><span class="line">    <span class="keyword">return</span> is == it ? EOF : *is++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll x = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="type">char</span> ch = <span class="built_in">getch</span>();</span><br><span class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">&#x27;0&#x27;</span> || ch &gt; <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f = <span class="number">-1</span>;</span><br><span class="line">        ch = <span class="built_in">getch</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; ch &lt;= <span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (ch ^ <span class="number">48</span>), ch = <span class="built_in">getch</span>();</span><br><span class="line">    <span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="int128-输出重载"><code>__int128</code> 输出重载</h2>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; out, i128 x) &#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="number">0</span>)</span><br><span class="line">        out &lt;&lt; <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">0</span>)</span><br><span class="line">        out &lt;&lt; <span class="string">&quot;-&quot;</span>, x = -x;</span><br><span class="line">    stack&lt;<span class="type">int</span>&gt; S;</span><br><span class="line">    <span class="keyword">while</span> (x &gt; <span class="number">0</span>) S.<span class="built_in">push</span>(x % <span class="number">10</span>), x /= <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">while</span> (!S.<span class="built_in">empty</span>()) out &lt;&lt; S.<span class="built_in">top</span>(), S.<span class="built_in">pop</span>();</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="字符串哈希">字符串哈希</h2>
@@ -714,6 +714,59 @@ class="math inline">\(l_{u1}\)</span> 两种情况。</p>
       <categories>
         <category>算法竞赛</category>
         <category>模板</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IO 优化</title>
+    <url>/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/IO/</url>
+    <content><![CDATA[<p>水群看到群友说 <code>gechar()</code> 是慢读,
+研究了一下发现确实有优化空间.</p>
+<p>下面我根据 <a href="https://loj.ac/p/7">LibreOJ #7. Input Test</a>
+为例进行了几个测试.</p>
+<span id="more"></span>
+<h2 id="cin">cin</h2>
+<p><code>cin</code> 有两个地方可以优化, 分别是
+<code>ios::sync_with_stdio(false)</code> 与
+<code>cin.tie(nullptr)</code>. 事实上, 这两步优化可以简写为
+<code>cin.tie(nullptr)-&gt;ios::sync_with_stdio(false)</code>.</p>
+<p>在 <code>main()</code> 里面加上一行后面正常使用 <code>cin</code>
+就行了. 不过需要注意 <code>cin</code> 与 <code>scanf()</code>
+不可以混用, <code>cout</code> 与 <code>printf()</code> 也不可以混用.
+好在 <code>cin</code> 与 <code>printf()</code>, <code>cout</code> 与
+<code>scanf()</code> 还是可以的.</p>
+<h2 id="getchar">getchar()</h2>
+<p>代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">ll <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll x = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="type">char</span> ch = <span class="built_in">getchar_unlocked</span>();</span><br><span class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">&#x27;0&#x27;</span> || ch &gt; <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f = <span class="number">-1</span>;</span><br><span class="line">        ch = <span class="built_in">getchar_unlocked</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; ch &lt;= <span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (ch ^ <span class="number">48</span>), ch = <span class="built_in">getchar_unlocked</span>();</span><br><span class="line">    <span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果使用 <code>read()</code> 最好不要采用其他数据输入方式.</p>
+<h2 id="getchar_unlocked">getchar_unlocked()</h2>
+<p>代码就是上面的 <code>getchar()</code> 替换成
+<code>getchar_unlocked()</code>.</p>
+<p>至于这两个函数的区别大概有两点:</p>
+<ol type="1">
+<li>后者并非线程安全, 只适合在单线程环境下使用;</li>
+<li>后者并非标准函数, 在 Windows 系统下可能 CE (好像可以选择用
+<code>_getchar_nolock()</code> 来替代).</li>
+</ol>
+<h2 id="fread">fread()</h2>
+<p>代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> BUFSIZE = <span class="number">1</span> &lt;&lt; <span class="number">20</span>;</span><br><span class="line"><span class="type">char</span> ibuf[BUFSIZE], *is = ibuf, *it = ibuf;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">char</span> <span class="title">getch</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (is == it) it = (is = ibuf) + <span class="built_in">fread</span>(ibuf, <span class="number">1</span>, BUFSIZE, stdin);</span><br><span class="line">    <span class="keyword">return</span> is == it ? EOF : *is++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll x = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="type">char</span> ch = <span class="built_in">getch</span>();</span><br><span class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">&#x27;0&#x27;</span> || ch &gt; <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f = <span class="number">-1</span>;</span><br><span class="line">        ch = <span class="built_in">getch</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; ch &lt;= <span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (ch ^ <span class="number">48</span>), ch = <span class="built_in">getch</span>();</span><br><span class="line">    <span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="测试结果">测试结果</h2>
+<ul>
+<li>无优化 <code>cin</code>: 4290 ms;</li>
+<li>关同步 <code>cin</code>: 857 ms;</li>
+<li>关同步 + 解绑定 <code>cin</code>: 765 ms;</li>
+<li><code>getchar()</code> 快读: 513 ms;</li>
+<li><code>getchar_unlocked()</code> 快读: 195 ms;</li>
+<li><code>fread()</code> 替代 <code>getchar()</code> 快读: 179 ms;</li>
+<li><code>fread_unlocked()</code> 替代 <code>getchar()</code> 快读: 179
+ms.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法竞赛</category>
       </categories>
       <tags>
         <tag>cpp</tag>
