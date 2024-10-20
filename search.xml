@@ -724,7 +724,7 @@ class="math inline">\(l_{u1}\)</span> 两种情况。</p>
     <url>/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/IO/</url>
     <content><![CDATA[<p>水群看到群友说 <code>gechar()</code> 是慢读,
 研究了一下发现确实有优化空间.</p>
-<p>下面我根据 <a href="https://loj.ac/p/7">LibreOJ #7. Input Test</a>
+<p>下面我以 <a href="https://loj.ac/p/7">LibreOJ #7. Input Test</a>
 为例进行了几个测试.</p>
 <span id="more"></span>
 <h2 id="cin">cin</h2>
