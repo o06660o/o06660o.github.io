@@ -778,4 +778,17 @@ ms.</li>
         <tag>cpp</tag>
       </tags>
   </entry>
+  <entry>
+    <title>无插件 .vimrc 配置</title>
+    <url>/2024/10/%E6%9D%82%E9%A1%B9/vimrc/</url>
+    <content><![CDATA[<p>算法竞赛中为了快速配置 vim 需要一个简短的 <code>.vimrc</code>
+模板.</p>
+<!-- less -->
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">color slate</span><br><span class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></span><br><span class="line"><span class="keyword">set</span> rnu hls cin et <span class="keyword">ts</span>=<span class="number">4</span> <span class="keyword">sw</span>=<span class="number">4</span> <span class="keyword">so</span>=<span class="number">8</span> mouse=<span class="keyword">a</span> nocompatible</span><br><span class="line"><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-s&gt;</span> :<span class="keyword">w</span><span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;F5&gt;</span> :<span class="keyword">w</span><span class="symbol">&lt;CR&gt;</span>:!g++ -DDEBUG % -<span class="keyword">o</span> ./out/%&lt; -g -std=<span class="keyword">c</span>++<span class="number">11</span> -Wall &amp;&amp; time ./out/%&lt;<span class="symbol">&lt;CR&gt;</span></span><br><span class="line">fun Init()</span><br><span class="line">    <span class="keyword">rightbelow</span> <span class="keyword">vsplit</span> test/main.out</span><br><span class="line">    <span class="keyword">split</span> test/main.in</span><br><span class="line">    <span class="keyword">wincmd</span> h</span><br><span class="line">endfun</span><br><span class="line"><span class="keyword">autocmd</span> VimEnter *.cpp <span class="keyword">call</span> Init()</span><br><span class="line"><span class="keyword">autocmd</span> BufNewFile *.cpp <span class="number">0</span>r head.cpp</span><br><span class="line"></span><br><span class="line"><span class="comment">&quot; rnu: relativenumber, hls: hlsearch, cin: cindent</span></span><br><span class="line"><span class="comment">&quot; et: expandtab, ts: tabstop, sw: shiftwidth so: scrolloff</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法竞赛</category>
+        <category>模板</category>
+      </categories>
+  </entry>
 </search>
