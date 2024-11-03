@@ -20,23 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"o06660o.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="MyBlog ≧ ﹏ ≦">
-<meta property="og:url" content="http://o06660o.github.io/tags/cpp/">
+    <meta name="description" content="简单的树状数组模板.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树状数组模板">
+<meta property="og:url" content="http://o06660o.github.io/2024/11/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/FenwickTree/">
 <meta property="og:site_name" content="MyBlog ≧ ﹏ ≦">
+<meta property="og:description" content="简单的树状数组模板.">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-03T06:52:42.690Z">
+<meta property="article:modified_time" content="2024-11-03T06:53:40.590Z">
 <meta property="article:author" content="o06660o">
+<meta property="article:tag" content="cpp">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://o06660o.github.io/tags/cpp/">
+<link rel="canonical" href="http://o06660o.github.io/2024/11/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/FenwickTree/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/cpp/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://o06660o.github.io/2024/11/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/FenwickTree/","path":"2024/11/算法竞赛/模板/FenwickTree/","title":"树状数组模板"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>标签: cpp | MyBlog ≧ ﹏ ≦</title>
+<title>树状数组模板 | MyBlog ≧ ﹏ ≦</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -194,233 +199,112 @@
 
     </div>
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">cpp
-          <small>标签</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://o06660o.github.io/2024/11/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/FenwickTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="o06660o">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog ≧ ﹏ ≦">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="树状数组模板 | MyBlog ≧ ﹏ ≦">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          树状数组模板
         </h1>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-03 14:52:42" itemprop="dateCreated datePublished" datetime="2024-11-03T14:52:42+08:00">2024-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-03 14:53:40" itemprop="dateModified" datetime="2024-11-03T14:53:40+08:00">2024-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">算法竞赛</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/" itemprop="url" rel="index"><span itemprop="name">模板</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>简单的树状数组模板.</p>
+<span id="more"></span>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BIT</span> &#123;</span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> n_;</span><br><span class="line">    vector&lt;ll&gt; c_;</span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123; <span class="keyword">return</span> x &amp; -x; &#125;</span><br><span class="line">    <span class="function">ll <span class="title">pre</span><span class="params">(<span class="type">int</span> pos)</span> </span>&#123;</span><br><span class="line">        ll ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; pos &gt; <span class="number">0</span>; pos -= <span class="built_in">lowbit</span>(pos)) ret += c_[pos];</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// please ensure that vec is 1-indexed</span></span><br><span class="line">    <span class="built_in">BIT</span>(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; vec) &#123;</span><br><span class="line">        n_ = vec.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        c_.<span class="built_in">resize</span>(n_ + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n_; i++) <span class="built_in">add</span>(i, vec[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> pos, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (; pos &lt;= n_; pos += <span class="built_in">lowbit</span>(pos)) c_[pos] += x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ll <span class="title">query</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">pre</span>(r - <span class="number">1</span>) - <span class="built_in">pre</span>(l - <span class="number">1</span>); &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-11-03T14:52:42+08:00"
-              content="2024-11-03">
-          11-03
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/11/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/FenwickTree/" itemprop="url">
-            <span itemprop="name">树状数组模板</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cpp/" rel="tag"># cpp</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/11/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/SegmentTree/" rel="prev" title="线段树模板">
+                  <i class="fa fa-angle-left"></i> 线段树模板
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-11-01T19:33:05+08:00"
-              content="2024-11-01">
-          11-01
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/11/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/SegmentTree/" itemprop="url">
-            <span itemprop="name">线段树模板</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-31T11:18:39+08:00"
-              content="2024-10-31">
-          10-31
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/ModInt/" itemprop="url">
-            <span itemprop="name">取模整数类</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-20T21:42:15+08:00"
-              content="2024-10-20">
-          10-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/IO/" itemprop="url">
-            <span itemprop="name">IO 优化</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-11T08:20:39+08:00"
-              content="2024-10-11">
-          10-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E8%A7%A3/Codeforces/CF2000G/" itemprop="url">
-            <span itemprop="name">Codeforces Round 966 (Div. 3) G 题解</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-07T18:02:17+08:00"
-              content="2024-10-07">
-          10-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/Math/" itemprop="url">
-            <span itemprop="name">数学模板</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-07T17:59:29+08:00"
-              content="2024-10-07">
-          10-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/BigInt/" itemprop="url">
-            <span itemprop="name">高精度模板</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-07T17:56:17+08:00"
-              content="2024-10-07">
-          10-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%A8%A1%E6%9D%BF/miscellaneous/" itemprop="url">
-            <span itemprop="name">其他模板</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-06T20:32:33+08:00"
-              content="2024-10-06">
-          10-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-10-3/" itemprop="url">
-            <span itemprop="name">UVA1643 题解</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-06T20:32:33+08:00"
-              content="2024-10-06">
-          10-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E8%A7%A3/AOAPC-II/Exercise-5-11/" itemprop="url">
-            <span itemprop="name">UVA12504 题解</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/tags/cpp/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/tags/cpp/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
 
 </div>
   </main>
