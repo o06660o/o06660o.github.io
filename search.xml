@@ -868,12 +868,13 @@ href="https://onlinejudge.org/external/10/1069.pdf">英文题面</a></p>
     <url>/2024/11/%E5%A4%A7%E5%AD%A6/2024Fall-SI100B-midterm/</url>
     <content><![CDATA[<h2 id="考试环境">考试环境</h2>
 <ul>
-<li>Windows10 机器</li>
+<li>操作系统: Windows10</li>
 <li>终端 <code>cmd</code>, 古董 <code>powershell</code></li>
-<li>文本编辑器: <code>vscode</code>, <code>vim9.1</code>,
-<code>gvim</code></li>
+<li>编辑器: <code>vscode</code> (包含插件 <code>pylance</code>,
+<code>python debugger</code>, <code>pylint</code>), <code>vim</code>
+(版本 <span class="math inline">\(9.1\)</span>), <code>gvim</code></li>
 <li>IDE: <code>pycharm</code></li>
-<li>键盘还可以, 鼠标手感稀烂 (有的机房可能键盘也烂)</li>
+<li>外设: 键盘还可以, 鼠标手感稀烂 (有的机房可能键盘也烂)</li>
 </ul>
 <h2 id="考试题目">考试题目</h2>
 <h3 id="第一场">第一场</h3>
