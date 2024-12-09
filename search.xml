@@ -990,17 +990,17 @@ T \times K\)</span> 最大。其中 <span class="math inline">\(S\)</span>
 \text{没有选择过 } C_i \\ 0 &amp; \text{已经选择过 } C_i
 \end{cases}\]</span>
 可以发现第一项就是背包板子，第二项启示我们可以根据颜色来分组决策。那么先根据颜色给商品排个序，依旧定义
-<span class="math inline">\(f[i][j]\)</span> 为考虑前 <span
+<span class="math inline">\(f(i, j)\)</span> 为考虑前 <span
 class="math inline">\(i\)</span> 个商品用去价值 <span
 class="math inline">\(j\)</span> 所得的最大目标值。</p>
 <p>如果已经选择过 <span class="math inline">\(C_i\)</span>,
-转移方程就是简单的 <span class="math display">\[f[i][j] \leftarrow f[i -
-1][j - P_i] + U_i\]</span></p>
+转移方程就是简单的 <span class="math display">\[f(i, j) \leftarrow f(i -
+1, j - P_i) + U_i\]</span></p>
 <p>如果没有选择过 <span class="math inline">\(C_i\)</span>,
 那么这一整组, <span class="math inline">\(i\)</span>
 之前的商品等于被跳过了，记录上一组最后位置是 <span
-class="math inline">\(pre\)</span>，转移方程变为了 <span
-class="math display">\[f[i][j] \leftarrow f[pre][j - P_i] + U_i +
+class="math inline">\(p\)</span>，转移方程变为了 <span
+class="math display">\[f(i, j) \leftarrow f(p, j - P_i) + U_i +
 K\]</span></p>
 <p>然后考虑用滚动数组优化，在遇上新一组商品的时候令
 <code>vector&lt;int&gt;g = f</code> 保留上一组最后位置的状态，</p>
