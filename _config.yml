@@ -22,6 +22,7 @@ url: "https://o06660o.github.io"
 author:
   name: o06660o
   email: 2957531723@qq.com
+repository: o06660o/o06660o.github.io # Fix GitHub actions failure.
 
 # Build settings,
 remote_theme: jekyll/minima
