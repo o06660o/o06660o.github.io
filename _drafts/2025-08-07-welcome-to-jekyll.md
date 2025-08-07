@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-date:   2025-08-07 18:29:31 +0800
+date:   2025-08-07 +0800
+modified_date:  2025-08-08 +0800
 categories: jekyll update
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
@@ -33,3 +34,17 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 > And supports multi-line text.
+
+> [!TIP]
+> Optional information to help a user be more successful.
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+
+  > [!WARNING]  
+  > Critical content demanding immediate
+  > user attention due to potential risks.
+
+> [!CAUTION]
+> Negative potential consequences of an action.
+> Opportunity to provide more context.
