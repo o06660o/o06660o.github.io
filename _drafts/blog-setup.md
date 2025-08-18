@@ -11,3 +11,7 @@
 [plugin_gfm_admonitions]: https://github.com/Helveg/jekyll-gfm-admonitions/tree/main
 [minima]: https://github.com/jekyll/minima/tree/master
 [enable_mathjax]: https://jojozhuang.github.io/tutorial/jekyll-math-symbols-with-mathjax/
+
+## 使用方法
+
+- 本地测试 `bundle exec jekyll serve --livereload`
