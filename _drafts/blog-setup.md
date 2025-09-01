@@ -12,6 +12,15 @@
 [minima]: https://github.com/jekyll/minima/tree/master
 [enable_mathjax]: https://jojozhuang.github.io/tutorial/jekyll-math-symbols-with-mathjax/
 
-## 使用方法
+## 可能忘记的东西
 
-- 本地测试 `bundle exec jekyll serve --livereload`
+- 本地测试: `bundle exec jekyll serve --livereload`
+- 在 `site-header` 中添加新的内容 (比如 About) 只需要往根目录添加 `about.md`, 里面的开头加上
+
+  ```text
+  ---
+  layout: page
+  title: About
+  permalink: /about/
+  ---
+  ```
